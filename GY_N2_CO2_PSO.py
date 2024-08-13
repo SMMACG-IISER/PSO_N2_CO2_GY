@@ -7,7 +7,7 @@ from scipy.spatial.transform import Rotation as R
 from multiprocessing import Pool
 
 
-input_sheet="GDY.txt"  #File containing the coordinates of sheet provided in a comma-separated format
+input_sheet="GY.txt"  #File containing the coordinates of sheet provided in a comma-separated format
 
 s_atom=np.loadtxt(input_sheet,delimiter=',',usecols=(0),dtype=str,unpack=True) #Reading atoms
 s_cord=np.loadtxt(input_sheet,delimiter=',',usecols=(1,2,3),dtype=float,unpack=True) #Reading coordinates:  A 3xN array representing the coordinates of the GY atoms
