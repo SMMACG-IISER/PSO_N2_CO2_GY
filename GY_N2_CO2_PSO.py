@@ -13,8 +13,38 @@ s_atom=np.loadtxt(input_sheet,delimiter=',',usecols=(0),dtype=str,unpack=True) #
 s_cord=np.loadtxt(input_sheet,delimiter=',',usecols=(1,2,3),dtype=float,unpack=True) #Reading coordinates:  A 3xN array representing the coordinates of the GY atoms
 s_natoms=int(sum(1 for line in open(input_sheet))) #Counting number of lines/atoms
 
+# Specify the number of molecules to study
+# Specify n/m = 0 for the case of unary cluster adsorption
+m = 2 # Number of CO2 molecules
+n = 2 # Number of N2 molecules
 
-   
+# PSO algorithm parameters
+pop = 2000  # Population size
+maxtrial = 25  # Number of trials
+maxit = 1000  # Maximum number of iterations
+c1 = 2.05  # Cognitive coefficient
+c2 = 2.05  # Social coefficient
+chi = 0.729  # Constriction factor
+
+# Define the search space boundaries
+# The boundaries of X and Y components changes with the GY model considered
+x_min = -18.47184; x_max = 18.47184
+y_min = -21.32945; y_max = 21.32945
+z_min = 0; z_max = 5 
+φ_min = 0; φ_max = (2*np.pi)
+θ_min = 0; θ_max = np.pi
+Ψ_min = 0; Ψ_max = (2*np.pi)
+
+
+# Define the maximum velocity limits in each dimension
+velmax_x = 0.5*(x_max-x_min)
+velmax_y = 0.5*(y_max-y_min)
+velmax_z = 0.5*(z_max-z_min)
+velmax_φ = 0.5*(φ_max-φ_min)
+velmax_θ = 0.5*(θ_max-θ_min)
+velmax_Ψ = 0.5*(Ψ_max-Ψ_min) 
+
+
 def charge_pos(coord):
     """Calculates the positions of four charges around a given N2 molecule.
 
@@ -435,34 +465,6 @@ def lbfgs_function(np_array, n, m):
 
     return E
  
-    
-        
-# Define the search space boundaries
-# The boundaries of X and Ycomponents changes with the GY model considered
-x_min = -18.47184; x_max = 18.47184
-y_min = -21.32945; y_max = 21.32945
-z_min = 0; z_max = 5 
-φ_min = 0; φ_max = (2*np.pi)
-θ_min = 0; θ_max = np.pi
-Ψ_min = 0; Ψ_max = (2*np.pi)
-
-
-# Define the maximum velocity limits in each dimension
-velmax_x = 0.5*(x_max-x_min)
-velmax_y = 0.5*(y_max-y_min)
-velmax_z = 0.5*(z_max-z_min)
-velmax_φ = 0.5*(φ_max-φ_min)
-velmax_θ = 0.5*(θ_max-θ_min)
-velmax_Ψ = 0.5*(Ψ_max-Ψ_min) 
-
-
-# PSO algorithm parameters
-pop = 2000  # Population size
-maxtrial = 25  # Number of trials
-maxit = 1000  # Maximum number of iterations
-c1 = 2.05  # Cognitive coefficient
-c2 = 2.05  # Social coefficient
-chi = 0.729  # Constriction factor
 
 
 def PSO_init(n):
@@ -588,10 +590,6 @@ def PSO(velocity, position, pbest_position, gbest_pos, vel_angle, eul_angle, pbe
     # Return the updated positions and velocities
     return position, eul_angle, velocity, vel_angle
 
-# Specify the number of molecules to study
-# Specify n/m = 0 for the case of unary cluster adsorption
-m = 2 # Number of CO2 molecules
-n = 2 # Number of N2 molecules
 
 def parallel(a, b):
     """
