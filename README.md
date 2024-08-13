@@ -13,7 +13,7 @@ pip install numpy scipy
 ```
 ## Input File
 
-- **GY.txt**: This file should contain the atomic coordinates of the Graphyne sheet in a comma-separated format. Each line should represent an atom with its corresponding x, y, z coordinates. 
+- **GY.txt**: This file should contain the atomic coordinates of the GY sheet in a comma-separated format. Each line should represent an atom with its corresponding x, y, z coordinates. 
 
 Example format:
 ```
@@ -21,7 +21,7 @@ C, 0.0000, 0.0000, 0.0000
 C, 1.2300, 0.0000, 0.0000
 C, 2.4600, 0.0000, 0.0000
 ```
-- **GY-COORDS/**: This folder contains the coordinates of gamma-Graphynes (γ-GY) used in the study.
+- **GY-COORDS/**: This folder contains the coordinates of γ-GY used in the study.
 ## Variables to Specify
 
 Before running the script, specify the following variables in the script:
