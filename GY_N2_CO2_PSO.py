@@ -438,6 +438,7 @@ def lbfgs_function(np_array, n, m):
     
         
 # Define the search space boundaries
+# The boundaries of X and Ycomponents changes with the GY model considered
 x_min = -18.47184; x_max = 18.47184
 y_min = -21.32945; y_max = 21.32945
 z_min = 0; z_max = 5 
@@ -465,17 +466,17 @@ chi = 0.729  # Constriction factor
 
 
 def PSO_init(n):
-    """Initializes the particle swarm optimization (PSO) algorithm.
+    """Initializes a single particle in the particle swarm optimization (PSO) algorithm.
 
     Args:
-        n (int): The number of particles in the swarm.
+        n (int): Number of molecules (CO2 or N2).
 
     Returns:
         tuple: A tuple containing:
-            - pos (numpy.ndarray): An n x 3 array representing the initial positions of the particles corresponding to centre of mass of the molecules.
-            - eul_angl (numpy.ndarray): An n x 3 array representing the initial positions of the particles corresponding to Euler angles of the molecules.
-            - vel (numpy.ndarray): An n x 3 array representing the initial velocities of the particles corresponding to centre of mass of the molecules.
-            - vel_angl (numpy.ndarray): An n x 3 array representing the initial velocities of the particles corresponding to Euler angles of the molecules.
+            - pos (numpy.ndarray): An n x 3 array representing the initial positions of the particle corresponding to centre of mass of the molecules.
+            - eul_angl (numpy.ndarray): An n x 3 array representing the initial positions of the particle corresponding to Euler angles of the molecules.
+            - vel (numpy.ndarray): An n x 3 array representing the initial velocities of the particle corresponding to centre of mass of the molecules.
+            - vel_angl (numpy.ndarray): An n x 3 array representing the initial velocities of the particle corresponding to Euler angles of the molecules.
     """
 
     np.random.seed()  # Set a random seed for reproducibility
@@ -488,7 +489,7 @@ def PSO_init(n):
     θ = np.random.uniform(θ_min, θ_max, n)
     Ψ = np.random.uniform(Ψ_min, Ψ_max, n)
 
-    # Combine position and orientation coordinates into matrices
+    # Combine the center of mass positions and orientations into matrices
     pos = np.column_stack((x, y, z))
     eul_angl = np.column_stack((φ, θ, Ψ))
 
@@ -556,7 +557,7 @@ def PSO(velocity, position, pbest_position, gbest_pos, vel_angle, eul_angle, pbe
     # Random numbers for stochastic component of velocity update
     r1 = np.random.rand(n, 3)  # Random numbers for position update (x, y, z)
     r2 = np.random.rand(n, 3)
-    r11 = np.random.rand(n, 3)  # Random numbers for angular update (φ, θ, Ψ)
+    r11 = np.random.rand(n, 3)  # Random numbers for position update (φ, θ, Ψ)
     r22 = np.random.rand(n, 3)
 
     # Update velocity based on personal best, global best, and inertia
@@ -584,7 +585,7 @@ def PSO(velocity, position, pbest_position, gbest_pos, vel_angle, eul_angle, pbe
     for y in range(n):
         eul_angle[y] = np.minimum(np.maximum(eul_angle[y], min_agl), max_agl)
         
-    # Return the updated positions, Euler angles, velocities, and angular velocities
+    # Return the updated positions and velocities
     return position, eul_angle, velocity, vel_angle
 
 # Specify the number of molecules to study
@@ -618,7 +619,7 @@ def parallel(a, b):
 
     # Initialize variables for PSO
     gbest_energy = math.inf  # Global best energy initialized to infinity
-    positions1, eul_angles1 = [], []  # Positions corresponding to center of mass positions and Euler angles for N2 molecules
+    positions1, eul_angles1 = [], []  # Position corresponding to center of mass positions and Euler angles for N2 molecules
     velocities1, vel_angles1 = [], []  # Velocity corresponding to center of mass positions and Euler angles for N2 molecules
     positions2, eul_angles2 = [], []  # Position corresponding to center of mass positions and Euler angles for CO2 molecules
     velocities2, vel_angles2 = [], []  # Velocity corresponding to center of mass positions and Euler angles for CO2 molecules
@@ -668,7 +669,7 @@ def parallel(a, b):
                 
     # PSO iterations
     for t in range(maxit):
-        # Linearly reduce the velocity limits over time
+        # Linearly reduce the velocity limits over iterations
         velmax = np.array([velmax_x, velmax_y, velmax_z]) * (t / maxit)
         velmin = np.array([-velmax_x, -velmax_y, -velmax_z]) * (t / maxit)
         velmax_agl = np.array([velmax_φ, velmax_θ, velmax_Ψ]) * (t / maxit)
