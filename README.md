@@ -1,10 +1,34 @@
-# PSO for N2/CO2 Adsortion on Graphyne
-The Python code executing global optimization of adsorbed molecular cluster configurations using particle swarm optimization. 
+# PSO for $ \text{N}_2 $ / $ \text{CO}_2 $ Adsortion on Graphyne
 
-Requirements:
-1. The code requires the Numpy, SciPy and Multiprocessing libraries to function.
-2. The user has to provide a .txt file containing the Cartesian coordinates of the Graphyne (GY) carbons in comma separated format (CSV).
-3. The code returns three files:
-   (a) A text file containing the PSO output of all the trials.
-   (b) A text file containing the PSO + L-BFGS-B output of all the trials.
-   (c) A text file containing the best PSO + L-BFGS-B output among all the trials.
+The Python code executing global optimization of adsorbed molecular cluster configurations using particle swarm optimization.
+
+## Prerequisites
+
+- Python 3.x
+- Required Python libraries: `numpy`, `scipy`, `math`, `multiprocessing`
+
+Install the required libraries using:
+```bash
+pip install numpy scipy multiprocessing
+```
+
+## Input File
+
+- **GDY.txt**: This file should contain the atomic coordinates of the Graphyne sheet in a comma-separated format. Each line should represent an atom with its corresponding x, y, z coordinates.
+
+Example format:
+```
+C, 0.0000, 0.0000, 0.0000
+C, 1.2300, 0.0000, 0.0000
+C, 2.4600, 0.0000, 0.0000
+```
+
+## How to Run the Script
+
+The script reads the atomic coordinates from `GDY.txt` using `numpy.loadtxt()` to process the atomic species and coordinates. Ensure that your `GDY.txt` file is correctly formatted and available in the script's directory.
+
+To execute the script, simply run:
+
+```bash
+python GY_N2_CO2_PSO.py
+```
