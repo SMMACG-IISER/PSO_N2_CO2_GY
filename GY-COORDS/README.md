@@ -1,6 +1,6 @@
 # Graphyne Coordinates
 
-This folder contains `.txt` files the coordinates for three different γ-Graphyne (γ-GY) structures: γ-GY1, γ-GY2, and γ-GY4. The coordinates are provided in a comma-separated values  ormat.
+This folder contains `.txt` files the coordinates for three different γ-GY structures: γ-GY1, γ-GY2, and γ-GY4. The coordinates are provided in a comma-separated values  format.
 
 ## Contents
 
