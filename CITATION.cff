@@ -1,18 +1,13 @@
 cff-version: 1.2.0
-message: "If you use this work, please cite it using the following metadata."
+message: "If you use this work, please cite it as below."
 title: "Title of the Unpublished Article"
 authors:
   - family-names: "LastName"
     given-names: "FirstName"
     orcid: "https://orcid.org/0000-0000-0000-0000"
-date-released: "2024-08-13"
-version: "1.0.0"
-doi: "10.0000/zenodo.0000000"
+  - family-names: "LastName"
+    given-names: "FirstName"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
 abstract: "Provide a brief summary or abstract of the article here."
-keywords:
-  - "keyword1"
-  - "keyword2"
-  - "keyword3"
 license: "CC-BY-4.0"
-url: "https://example.com/article-url"
-type: "article"
+type: "unpublished"
