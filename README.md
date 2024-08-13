@@ -27,7 +27,7 @@ C, 2.4600, 0.0000, 0.0000
 
 The script reads the atomic coordinates from `GY.txt` using `numpy.loadtxt()` to process the atomic species and coordinates. Ensure that your `GY.txt` file is correctly formatted and available in the script's directory.
 
-To execute the script, simply run:
+To execute the script, simply run from the terminal:
 
 ```bash
 python GY_N2_CO2_PSO.py
