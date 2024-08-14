@@ -609,11 +609,6 @@ def parallel(a, b):
 
     trial = a
 
-    # Open a file to log PSO results for N2 and CO2 adsorption on GY
-    f = open("GY-N2-CO2_PSO", "a")
-    f.write("\ntrial: %s" % trial)        
-    f.write("\nNo. of N2 molecules: %s" % n)
-    f.write("\nNo. of CO2 molecules: %s" % m)
 
     # Initialize variables for PSO
     gbest_energy = math.inf  # Global best energy initialized to infinity
@@ -718,6 +713,12 @@ def parallel(a, b):
     gbest_pos_int1 = conversion_N2(gbest_pos1, gbest_angle1, n)
     gbest_pos_int2 = conversion_CO2(gbest_pos2, gbest_angle2, m)
 
+    # Open a file to log PSO results for N2 and CO2 adsorption on GY
+    f = open("GY-N2-CO2_PSO", "a")
+    f.write("\ntrial: %s" % trial)        
+    f.write("\nNo. of N2 molecules: %s" % n)
+    f.write("\nNo. of CO2 molecules: %s" % m)
+	
     # Log the global best energy
     f.write("\nGlobal Best Energy: %s" % gbest_energy)
     
