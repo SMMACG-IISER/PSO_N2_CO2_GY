@@ -11,9 +11,9 @@ Install the required libraries using:
 ```bash
 pip install numpy scipy
 ```
-## Input File
+## Input File for Running GY_N2_CO2_PSO.py
 
-- **GY.txt**: This file should contain the atomic coordinates of the GY sheet in a comma-separated format. Each line should represent an atom with its corresponding x, y, z coordinates. 
+- **GY.txt**: This file should contain the atomic coordinates of the GY sheet in a comma-separated format. Each line should represent an atom with its corresponding x, y, z coordinates. The script reads the atomic coordinates from `GY.txt` using `numpy.loadtxt()` to process the atomic species and coordinates. Ensure that your `GY.txt` file is correctly formatted and available in the script's directory.
 
 Example format:
 ```
@@ -21,7 +21,7 @@ C, 0.0000, 0.0000, 0.0000
 C, 1.2300, 0.0000, 0.0000
 C, 2.4600, 0.0000, 0.0000
 ```
-- **GY-COORDS/**: This folder contains the coordinates of γ-GY used in the study.
+- **GY-COORDS/**: This folder contains the coordinates of γ-GY model sytems used in the study.
 ## Variables to Specify
 
 Before running the script, specify the following variables in the script:
@@ -46,11 +46,15 @@ Before running the script, specify the following variables in the script:
     maxit = 1000    # Maximum number of iterations
     ```
 
-## How to Run the Script
+## How to Run the Scripts
 
-The script reads the atomic coordinates from `GY.txt` using `numpy.loadtxt()` to process the atomic species and coordinates. Ensure that your `GY.txt` file is correctly formatted and available in the script's directory. Update the script with the appropriate values for the number of molecules and PSO parameters as outlined above.
+Update the script with the appropriate values for the number of molecules and PSO parameters as outlined above.
 
 To execute the script, simply run from the terminal:
+
+```bash
+python N2_CO2_bare_PSO.py
+```
 
 ```bash
 python GY_N2_CO2_PSO.py
