@@ -1,6 +1,6 @@
 # PSO for N2/CO2 Adsorption on Graphyne (GY)
 
-The Python code for executing global optimization of adsorbed molecular cluster configurations using particle swarm optimization.
+The Python code for executing global optimization of bare and adsorbed molecular cluster configurations using particle swarm optimization.
 
 ## Prerequisites
 
