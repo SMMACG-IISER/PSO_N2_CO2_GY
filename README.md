@@ -56,6 +56,9 @@ To execute the script, simply run from the terminal:
 python N2_CO2_bare_PSO.py
 ```
 
-```bash
-python GY_N2_CO2_PSO.py
-```
+## Citations
+
+If you use this script for your research or work, please cite the following paper:
+
+> **Rajeevan, M., John, C., Swathi, R. S.** "On assessing the carbon capture performance of graphynes with particle swarm optimization," *Phys. Chem. Chem. Phys.*, 2024, **26**, 23152–23167. DOI: [10.1039/D4CP02843K](https://doi.org/10.1039/D4CP02843K)
+
