@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the following paper:"
+authors:
+  - family-names: Rajeevan
+    given-names: Megha
+  - family-names: John
+    given-names: Chris
+  - family-names: Swathi
+    given-names: Rotti Srinivasamurthy
+title: "On assessing the carbon capture performance of graphynes with particle swarm optimization"
+version: 1.0.0
+doi: 10.1039/D4CP02843K
+date-released: 2024-01-01
+url: https://doi.org/10.1039/D4CP02843K
+repository-code: https://github.com/SMMACG-IISER/PSO_N2_CO2_GY
+keywords:
+  - particle swarm optimization
+  - carbon capture
+  - graphynes
+  - computational chemistry
